@@ -5,6 +5,7 @@ import AppRoutes from '../../routes/AppRoutes';
 function AppComponent() {
   return (
     <Provider store={configureStore()}>
+    
       <AppRoutes />
     </Provider>
   );

@@ -1,11 +1,15 @@
 import React from 'react';
 import configureStore from "../../Redux Utilities/store"
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
+
+import { Redirect, Route } from "react-router-dom";
+
+import * as Utility from '../../utilities/Utility';
+
 import AppRoutes from '../../routes/AppRoutes';
-function AppComponent() {
+const AppComponent = () => {
   return (
     <Provider store={configureStore()}>
-    
       <AppRoutes />
     </Provider>
   );

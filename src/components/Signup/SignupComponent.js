@@ -106,6 +106,7 @@ const validateInput = (props) => {
     return false;
   }
 }
+
 const mapStateToProps = state => ({
   state: state.signupState
 })

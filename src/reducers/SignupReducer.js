@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
         ...state,
         [action.prop]: action.payload
       }
-    case ActionConstants.CLEAR_INPUT_FIELDS:
+    case ActionConstants.CLEAR_SIGNUP_INPUT_FIELDS:
       return {
         ...state,
         isLoaderVisible: false,
@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
         password: '',
         retypePassword: ''
       }
-    case ActionConstants.LOADER_STATUS:
+    case ActionConstants.SIGNUP_LOADER_STATUS:
       return {
         ...state,
         isLoaderVisible: action.payload

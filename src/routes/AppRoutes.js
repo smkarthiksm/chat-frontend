@@ -1,20 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LoginComponent from "../components/Login/LoginComponent"
-import DashboardComponent from "../components/Dashboard/DashboardComponent"
 import NotFoundComponent from "../components/NotFound/NotFoundComponent";
 import SignupComponent from "../components/Signup/SignupComponent";
+
+import LandingPageRouter from "./LandingPageRouter";
+import ProtectedRoutes from "./ProtectedRoutes";
+import ProtectedRoutesContainer from "./ProtectedRoutesContainer";
+
 const AppRoutes = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={LoginComponent} />
+        <LandingPageRouter exact path="/" />
         <Route path="/signup" component={SignupComponent} />
+        <ProtectedRoutes component={ProtectedRoutesContainer} />
         <Route component={NotFoundComponent} />
       </Switch>
     </Router>
   );
 }
-
-
 export default AppRoutes;

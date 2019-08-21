@@ -28,13 +28,13 @@ export const signup = (props) => dispatch => {
 
 export const clearInputFields = () => dispatch => {
   dispatch({
-    type: ActionConstants.CLEAR_INPUT_FIELDS
+    type: ActionConstants.CLEAR_SIGNUP_INPUT_FIELDS
   });
 }
 
 export const toggleLoaderStatus = (status) => dispatch => {
   dispatch({
-    type: ActionConstants.LOADER_STATUS,
+    type: ActionConstants.SIGNUP_LOADER_STATUS,
     payload: status
   });
 }

@@ -1,10 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import ProtectedRoutes from "./ProtectedRoutes";
+import LeftNavBarComponent from "../components/LeftNavBar/LeftNavBarComponent";
 import DashboardComponent from "../components/Dashboard/DashboardComponent";
-const DashboardContainer = () => (
-  <Fragment>
-    <h1>HEADER</h1>
-    <ProtectedRoutes path="/dashboard" component={DashboardComponent} />
-  </Fragment>
-)
+const DashboardContainer = () => {
+  return (
+    <div className="row">
+      <LeftNavBarComponent />
+      <ProtectedRoutes path="/dashboard" component={DashboardComponent} />
+    </div>
+  );
+}
 export default DashboardContainer;

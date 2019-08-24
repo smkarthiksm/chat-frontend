@@ -10,11 +10,6 @@ const initialState = {
 }
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ActionConstants.SIGNUP:
-      return {
-        ...state,
-        isLoaderVisible: action.payload
-      }
     case ActionConstants.UPDATE_SIGNUP_INPUTS:
       return {
         ...state,

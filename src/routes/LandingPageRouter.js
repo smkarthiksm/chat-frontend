@@ -7,9 +7,10 @@ const AuthorizedComponent = () => {
   return (
     <Fragment>
       {Utility.getJWT() ?
-        <Route render={() => <Redirect
+        <Route render={props => <Redirect
           to={{
             pathname: "/dashboard",
+            ...props
           }} />
         } />
         :

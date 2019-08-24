@@ -1,0 +1,31 @@
+.nav-bar-container {
+  background: #000000eb;
+  color: #969696;
+  padding-left: 2.2%;
+  .logo-image-container {
+    text-align: center;
+    margin: auto;
+    font-size: 2.5rem;
+    color: #a74d06;
+  }
+  .channels-container {
+    font-size: 0.8rem;
+    .channels-heading-container {
+      position: relative;
+      span {
+        font-size: 0.7rem;
+        letter-spacing: 0.6px;
+      }
+      i {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    .channels-heading-container:hover {
+      color: #cfcfcf;
+      cursor: pointer;
+    }
+  }
+}

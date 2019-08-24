@@ -72,7 +72,6 @@ const validateInput = (props) => {
 
 const mapStateToProps = state => ({
   state: state.loginState
-}
-);
+});
 
 export default connect(mapStateToProps, actions)(LoginComponent);

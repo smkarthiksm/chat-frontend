@@ -5,12 +5,9 @@ const initialState = {
   password: '',
 }
 export default (state = initialState, action) => {
+  console.log(":AAAS");
+  
   switch (action.type) {
-    case ActionConstants.LOGIN:
-      return {
-        ...state,
-        isLoaderVisible: action.payload
-      }
     case ActionConstants.UPDATE_LOGIN_INPUTS:
       return {
         ...state,

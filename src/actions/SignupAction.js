@@ -13,28 +13,20 @@ export const updateFields = (prop, value) => dispatch => {
 
 export const signup = (props) => dispatch => {
   const userModel = new UserModel(0, props.state.firstName, props.state.lastName, props.state.email, props.state.phoneNumber, props.state.password);
-  toggleLoaderStatus(true);
-  Api.api(ApplicationConstants.BASE_URL + ApplicationConstants.SIGNUP_URL, userModel)
+  dispatch({ type: ActionConstants.SIGNUP_LOADER_STATUS, payload: true });
+  Api.getSession(ApplicationConstants.BASE_URL + ApplicationConstants.SIGNUP_URL, userModel)
     .then(response => {
-      toggleLoaderStatus(false);
-      clearInputFields();
+      dispatch({ type: ActionConstants.SIGNUP_LOADER_STATUS, payload: false });
+      dispatch({ type: ActionConstants.CLEAR_SIGNUP_INPUT_FIELDS });
       props.history.push('/');
     })
     .catch(err => {
-      toggleLoaderStatus(false);
+      dispatch({ type: ActionConstants.SIGNUP_LOADER_STATUS, payload: false });
     });
-
 }
 
 export const clearInputFields = () => dispatch => {
   dispatch({
     type: ActionConstants.CLEAR_SIGNUP_INPUT_FIELDS
-  });
-}
-
-export const toggleLoaderStatus = (status) => dispatch => {
-  dispatch({
-    type: ActionConstants.SIGNUP_LOADER_STATUS,
-    payload: status
   });
 }

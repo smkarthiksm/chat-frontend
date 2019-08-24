@@ -24,7 +24,7 @@ const SignupComponent = (props) => {
                 <i className="fas fa-users"></i>
               </div>
               <div>
-                <span>Create Groups and Chat</span>
+                <span>Create Channels</span>
               </div>
             </div>
             <div className="direct-message-container">

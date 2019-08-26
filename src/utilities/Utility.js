@@ -10,5 +10,5 @@ export const getJWT = () => {
 }
 
 export const validateJWT = () => {
-  return moment.unix(jwt_decode(getJWT).exp) > moment();
+  return moment.unix(jwt_decode(getJWT()).exp) > moment();
 }

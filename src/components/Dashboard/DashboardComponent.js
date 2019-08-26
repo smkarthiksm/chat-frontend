@@ -1,12 +1,11 @@
 import React from 'react';
 import './DashboardComponent.scss'
-import DirectMessageModalComponent from '../DirectMessageModal/DirectMessageModalComponent';
-
+import ModalComponent from '../Modal/ModalComponent'
 const DashboardComponent = (props) => {
   return (
     <div className="col-md-10 dashboard-component-container">
       Dashboard component
-      <DirectMessageModalComponent />
+      <ModalComponent/>
     </div>
   );
 }

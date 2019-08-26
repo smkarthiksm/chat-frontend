@@ -20,6 +20,7 @@ export const search = (dispatch, value) => {
     Api.getApi(ApplicationConstants.BASE_URL + ApplicationConstants.FIND_BY_NAME_URL, { name: value })
       .then(response => {
         dispatch({ type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT, payload: response });
+        dispatch({ type: ActionConstants.LIST_DATA, payload: response });
         dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: false });
       })
       .catch(err => {
@@ -28,11 +29,36 @@ export const search = (dispatch, value) => {
   }
   else {
     dispatch({ type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT, payload: [] });
+    dispatch({ type: ActionConstants.LIST_DATA, payload: [] });
   }
 }
 
 export const clearInputFields = () => dispatch => {
   dispatch({
     type: ActionConstants.CLEAR_DIRECT_MESSAGE_INPUTS
+  });
+}
+
+export const hideModal = () => dispatch => {
+  dispatch({
+    type: ActionConstants.DIRECT_MESSAGE_MODAL_VISIBILITY,
+    payload: false
+  });
+  dispatch({
+    type: ActionConstants.CLEAR_DIRECT_MESSAGE_INPUTS
+  });
+  dispatch({
+    type: ActionConstants.CLEAR_LIST_DATA
+  });
+}
+
+export const removeItem = (value) => dispatch => {
+  dispatch({
+    type: ActionConstants.DIRECT_MESSAGE_MEMBERS_TO_BE_DISPLAYED,
+    payload: value
+  });
+  dispatch({
+    type: ActionConstants.MEMBERS_TO_BE_ADDED_LIST_DATA,
+    payload: value
   });
 }

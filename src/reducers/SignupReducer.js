@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     case ActionConstants.UPDATE_SIGNUP_INPUTS:
       return {
         ...state,
-        [action.prop]: action.payload
+        [action.payload.prop]: action.payload.value
       }
     case ActionConstants.CLEAR_SIGNUP_INPUT_FIELDS:
       return {

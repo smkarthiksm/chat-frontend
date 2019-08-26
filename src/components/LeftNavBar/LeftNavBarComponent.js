@@ -26,7 +26,7 @@ const LeftNavBarComponent = (props) => {
 }
 
 const mapStateToProps = state => ({
-  state: state.LeftNavBarComponent
+  state: state.leftNavBarState
 })
 
 export default connect(mapStateToProps, actions)(LeftNavBarComponent);

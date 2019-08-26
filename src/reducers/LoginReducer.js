@@ -5,13 +5,11 @@ const initialState = {
   password: '',
 }
 export default (state = initialState, action) => {
-  console.log(":AAAS");
-  
   switch (action.type) {
     case ActionConstants.UPDATE_LOGIN_INPUTS:
       return {
         ...state,
-        [action.prop]: action.payload
+        [action.payload.prop]: action.payload.value
       }
     case ActionConstants.CLEAR_LOGIN_INPUT_FIELDS:
       return {

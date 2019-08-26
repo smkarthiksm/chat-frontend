@@ -17,7 +17,7 @@
     border-radius: 3px;
     padding: 2%;
     .search-bar {
-      padding: 10px 0;
+      padding: 2.5px 0;
       font-size: 0.65rem;
       .user-input-box {
         position: relative;
@@ -34,6 +34,7 @@
         border-width: 1px;
         border-color: #000000;
         outline: none !important;
+        background: none !important;
       }
       .btn-primary {
         display: inline-block;
@@ -70,6 +71,29 @@
     }
     .loader-container {
       text-align: center;
+    }
+    .no-text-container {
+      text-align: center;
+      color: #919191;
+    }
+    .tag-container {
+      padding: 2.5px 0 !important;
+      .tag {
+        position: relative;
+        padding: 1% 4%;
+        background: #673ab7;
+        margin: 0 0.5%;
+        .tag-remove {
+          position: absolute;
+          top: 50%;
+          right: 10%;
+          transform: translateY(-50%);
+        }
+      }
+      .tag:hover {
+        cursor: pointer;
+        background: #4e2791;
+      }
     }
   }
 }

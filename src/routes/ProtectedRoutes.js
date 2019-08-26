@@ -6,7 +6,7 @@ const ProtectedRoutes = ({ component: Component }) => {
   return (
     <Route
       render={props =>
-        Utility.getJWT() ? (
+        Utility.getJWT()  && Utility.validateJWT()? (
           <Component {...props} />
         ) : (
             <Redirect

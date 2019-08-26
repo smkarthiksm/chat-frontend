@@ -7,8 +7,10 @@ import * as Utility from '../utilities/Utility';
 export const updateFields = (prop, value) => dispatch => {
   dispatch({
     type: ActionConstants.UPDATE_LOGIN_INPUTS,
-    prop: prop,
-    payload: value
+    payload: {
+      prop: prop,
+      value: value
+    }
   });
 }
 

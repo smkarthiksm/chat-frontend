@@ -6,8 +6,10 @@ import UserModel from '../models/UserModel';
 export const updateFields = (prop, value) => dispatch => {
   dispatch({
     type: ActionConstants.UPDATE_SIGNUP_INPUTS,
-    prop: prop,
-    payload: value
+    payload: {
+      prop: prop,
+      value: value
+    }
   });
 }
 

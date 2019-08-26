@@ -6,7 +6,7 @@ import * as Utility from '../utilities/Utility';
 const AuthorizedComponent = () => {
   return (
     <Fragment>
-      {Utility.getJWT() ?
+      {Utility.getJWT()  && Utility.validateJWT()?
         <Route render={props => <Redirect
           to={{
             pathname: "/dashboard",

@@ -1,9 +1,11 @@
 import * as ActionConstants from "../constants/ActionConstants"
 const initialState = {
+  modalTitle: '',
   isButtonLoaderVisible: false,
   isDataLoaderVisible: false,
   searchValue: '',
-  searchResponse: [],
+  searchResponse: null,
+  membersToBeDisplayed: null,
   isModalVisible: false
 }
 export default (state = initialState, action) => {
@@ -21,10 +23,11 @@ export default (state = initialState, action) => {
     case ActionConstants.CLEAR_DIRECT_MESSAGE_INPUTS:
       return {
         ...state,
-        isButtonLoaderVisible: true,
+        isButtonLoaderVisible: false,
         isDataLoaderVisible: false,
         searchValue: '',
-        searchResponse: [],
+        searchResponse: null,
+        membersToBeDisplayed: null,
         isModalVisible: false
       }
     case ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS:
@@ -40,7 +43,13 @@ export default (state = initialState, action) => {
     case ActionConstants.DIRECT_MESSAGE_MODAL_VISIBILITY:
       return {
         ...state,
-        isModalVisible: action.payload
+        isModalVisible: action.payload.value,
+        modalTitle: action.payload.title,
+      }
+    case ActionConstants.DIRECT_MESSAGE_MEMBERS_TO_BE_DISPLAYED:
+      return {
+        ...state,
+        membersToBeDisplayed: action.payload
       }
     default:
       return state

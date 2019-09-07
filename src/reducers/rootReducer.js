@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import leftNavBarState from './LeftNavBarReducer';
-import listState from './ListReducer';
+import loaderState from './LoaderReducer';
 import loginState from './LoginReducer';
 import modalState from './ModalReducer';
 import signupState from './SignupReducer';
 export default combineReducers({
   leftNavBarState,
-  listState,
+  loaderState,
   loginState,
   modalState,
   signupState

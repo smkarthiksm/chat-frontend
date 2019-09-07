@@ -1,4 +1,5 @@
-.overlay {
+.modal-overlay {
+  z-index: 1;
   background: none;
   position: fixed;
   top: 0;

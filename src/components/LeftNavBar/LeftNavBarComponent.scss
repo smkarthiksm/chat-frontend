@@ -1,15 +1,16 @@
 .nav-bar-container {
   background: #000000eb;
   color: #969696;
-  padding-left: 2.2%;
   .logo-image-container {
     text-align: center;
     margin: auto;
     font-size: 2.5rem;
-    color: #a74d06;
+    color: #e97b22;
   }
   .channels-container {
     font-size: 0.8rem;
+    position: relative;
+    padding: 8% 0;
     .channels-heading-container {
       position: relative;
       span {
@@ -27,5 +28,48 @@
       color: #cfcfcf;
       cursor: pointer;
     }
+    .content-container {
+      a {
+        text-decoration: none !important;
+      }
+      .content {
+        position: relative;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        padding: 1% 3%;
+        margin: 2% 0;
+        color: #969696;
+        i {
+          font-size: 0.4rem;
+          position: absolute;
+          left: 4px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        span {
+          padding: 0px 15px;
+        }
+      }
+      .content:hover {
+        cursor: pointer;
+        color: #c7c7c7;
+        background: #292929;
+      }
+      .content-selected {
+        background: #e97b21 !important;
+        color: white !important;
+        border-radius: 2px !important;
+      }
+    }
+  }
+  .channels-container::before {
+    position: absolute;
+    content: "";
+    background: #2c2c2c;
+    width: 90%;
+    height: 0.1rem;
+    top: 0%;
+    left: 5%;
   }
 }

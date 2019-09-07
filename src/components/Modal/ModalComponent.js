@@ -2,13 +2,30 @@ import React, { Fragment } from 'react';
 import './ModalComponent.scss';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/ModalAction';
-
-import ListComponent from '../List/ListComponent';
+import ListComponent from '../../reusableComponents/List/ListComponent';
 const ModalComponent = (props) => {
+
+  const addSelectElement = (element) => {
+    let selectedElements = props.state.membersToBeDisplayed;
+    selectedElements.push(element);
+    selectedElements = selectedElements.filter((item, index, inputArray) => {
+      return inputArray.indexOf(item) === index;
+    });
+    props.selectedElements(selectedElements);
+  }
+
+  const removeSelectedElement = (index) => {
+    let selectedElements = props.state.membersToBeDisplayed;
+    if (index > -1) {
+      selectedElements.splice(index, 1);
+    }
+    props.selectedElements(selectedElements);
+  }
+
   return (
     <Fragment>
       {props.state.isModalVisible ?
-        <div className="overlay">
+        <div className="modal-overlay">
           <div className="modal-container">
             <div className="close-container" onClick={() => props.hideModal()}>
               <h3>
@@ -20,9 +37,9 @@ const ModalComponent = (props) => {
             </div>
             <div className="search-bar col-md-12">
               <input className="col-md-8 user-input-box" name="search" type="text" placeholder="Search by name..." defaultValue={props.state.searchValue} onChange={(event) => props.updateFields(event.target.value)} />
-              <button type="button" className="col-md-2 btn btn-primary btn-block" disabled={props.state.membersToBeDisplayed ? false : true}>
+              <button type="button" className="col-md-2 btn btn-primary btn-block" disabled={props.state.membersToBeDisplayed ? false : true} onClick={() => props.createNewDirectMessage(props.state.membersToBeDisplayed)}>
                 {props.state.isButtonLoaderVisible ?
-                  <div className="spinner-border spinner-border" role="status" />
+                  <div className="spinner-border spinner-border-sm" role="status" />
                   :
                   "Jump to conversation"
                 }
@@ -39,7 +56,7 @@ const ModalComponent = (props) => {
               {props.state.membersToBeDisplayed && props.state.membersToBeDisplayed.length > 0 ?
                 props.state.membersToBeDisplayed.map((element, index) =>
 
-                  <div key={element.id} className="badge badge-pill badge-primary tag" onClick={() => removeItem(props, props.state.membersToBeDisplayed, index)}>
+                  <div key={element.id} className="badge badge-pill badge-primary tag" onClick={() => removeSelectedElement(index)}>
                     {element.firstName} {element.lastName}
                     <span className="tag-remove"><i className="fas fa-times"></i></span>
                   </div>
@@ -53,7 +70,7 @@ const ModalComponent = (props) => {
                   No results to display
                 </div>
                 : props.state.searchResponse ?
-                  <ListComponent /> :
+                  <ListComponent listProps={{ listData: props.state.searchResponse, addSelectElement: addSelectElement }} /> :
                   null
               }
             </div>
@@ -61,12 +78,6 @@ const ModalComponent = (props) => {
         </div> : null}
     </Fragment>
   );
-}
-const removeItem = (props, array, index) => {
-  if (index > -1) {
-    array.splice(index, 1);
-  }
-  props.removeItem(array);
 }
 const mapStateToProps = state => ({
   state: state.modalState

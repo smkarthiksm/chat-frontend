@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as Utility from '../utilities/Utility';
 
-export const getApi = (url, queryParams) => {
+export const get = (url, queryParams) => {
   const jwt = getJWT();
   let config = {
     headers: jwt ? { "authorization": jwt } : null,
@@ -18,14 +18,13 @@ export const getApi = (url, queryParams) => {
   });
 };
 
-export const postApi = (url, payload) => {
+export const post = (url, payload) => {
   const jwt = getJWT();
   let config = {
     headers: jwt ? { "authorization": jwt } : null,
-    data: payload,
   }
   return new Promise((resolve, reject) => {
-    axios.get(url, config)
+    axios.post(url, payload, config)
       .then(res => {
         resolve(res.data)
       })

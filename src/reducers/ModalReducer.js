@@ -5,7 +5,7 @@ const initialState = {
   isDataLoaderVisible: false,
   searchValue: '',
   searchResponse: null,
-  membersToBeDisplayed: null,
+  membersToBeDisplayed: [],
   isModalVisible: false
 }
 export default (state = initialState, action) => {

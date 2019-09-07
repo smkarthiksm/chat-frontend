@@ -6,6 +6,24 @@ import * as actions from '../../actions/LoginAction';
 import * as Validations from '../../utilities/Validations';
 
 const LoginComponent = (props) => {
+
+  const onChange = (event) => {
+    props.updateFields(event.target.name, event.target.value)
+  }
+
+  const onSubmit = () => {
+    if (validateInput()) {
+      props.login(props);
+    }
+  }
+  const validateInput = () => {
+    if (Validations.emailValidation(props.state.email) && props.state.password) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
   return (
     <div className="row login-page-container">
       <div className="col-md-6 col-lg-6 col-xl-6 p-0 d-none d-md-block">
@@ -23,16 +41,16 @@ const LoginComponent = (props) => {
               </div>
             </div>
             <div className="user-input-container">
-              <input className="user-input-box" name="email" type="email" placeholder="Email" defaultValue={props.state.email} onChange={(event) => onChange(props, event)} />
+              <input className="user-input-box" name="email" type="email" placeholder="Email" defaultValue={props.state.email} onChange={(event) => onChange(event)} />
             </div>
             <div className="user-input-container pb-0">
-              <input className="user-input-box" name="password" type="password" placeholder="Password" defaultValue={props.state.password} onChange={(event) => onChange(props, event)} />
+              <input className="user-input-box" name="password" type="password" placeholder="Password" defaultValue={props.state.password} onChange={(event) => onChange(event)} />
             </div>
             <div className="forgot-password-container">
               <span>Forgot Password ?</span>
             </div>
             <div className="button-container">
-              <button type="button" className="btn btn-primary btn-block" onClick={() => onSubmit(props)}>
+              <button type="button" className="btn btn-primary btn-block" onClick={() => onSubmit()}>
                 {props.state.isLoaderVisible ?
                   <div className="spinner-border spinner-border-sm" role="status" />
                   :
@@ -50,24 +68,6 @@ const LoginComponent = (props) => {
       </div>
     </div>
   );
-}
-
-const onChange = (props, event) => {
-  props.updateFields(event.target.name, event.target.value)
-}
-
-const onSubmit = (props) => {
-  if (validateInput(props)) {
-    props.login(props);
-  }
-}
-const validateInput = (props) => {
-  if (Validations.emailValidation(props.state.email) && props.state.password) {
-    return true;
-  }
-  else {
-    return false;
-  }
 }
 
 const mapStateToProps = state => ({

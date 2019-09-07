@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import NotFoundComponent from "../components/NotFound/NotFoundComponent";
-import SignupComponent from "../components/Signup/SignupComponent";
 
+import ChatComponent from "../components/Chat/ChatComponent";
+import DashboardComponent from "../components/Dashboard/DashboardComponent";
 import LandingPageRouter from "./LandingPageRouter";
+import NotFoundComponent from "../components/NotFound/NotFoundComponent";
 import ProtectedRoutes from "./ProtectedRoutes";
-import ProtectedRoutesContainer from "./ProtectedRoutesContainer";
+import SignupComponent from "../components/Signup/SignupComponent";
 
 const AppRoutes = () => {
   return (
@@ -13,7 +14,8 @@ const AppRoutes = () => {
       <Switch>
         <LandingPageRouter exact path="/" />
         <Route path="/signup" component={SignupComponent} />
-        <ProtectedRoutes component={ProtectedRoutesContainer} />
+        <ProtectedRoutes path="/dashboard" component={DashboardComponent} />
+        <ProtectedRoutes exact path="/chatId=:chatId" component={ChatComponent} />
         <Route component={NotFoundComponent} />
       </Switch>
     </Router>

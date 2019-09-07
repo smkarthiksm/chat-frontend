@@ -12,3 +12,7 @@ export const getJWT = () => {
 export const validateJWT = () => {
   return moment.unix(jwt_decode(getJWT()).exp) > moment();
 }
+
+export const logOut = () => {
+  localStorage.removeItem(ApplicationConstants.JWT)
+}

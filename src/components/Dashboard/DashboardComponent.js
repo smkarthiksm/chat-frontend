@@ -5,7 +5,6 @@ const DashboardComponent = (props) => {
   return (
     <div className="col-md-10 dashboard-component-container">
       Dashboard component
-      <ModalComponent/>
     </div>
   );
 }

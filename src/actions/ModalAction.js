@@ -1,37 +1,32 @@
 import * as ActionConstants from "../constants/ActionConstants"
-import * as Api from "../api/ApiWrapper";
-import * as ApplicationConstants from '../constants/ApplicationConstants';
-import UserModel from '../models/UserModel';
-import * as Utility from '../utilities/Utility';
-
+import * as UserApis from '../api/UserApi'
+import * as ChatsApis from '../api/ChatsApi'
 export const updateFields = (value) => dispatch => {
   dispatch({
     type: ActionConstants.UPDATE_DIRECT_MESSAGE_INPUTS,
     payload: value
   });
-  search(dispatch, value);
+  searchByName(dispatch, value);
 }
 
-export const search = (dispatch, value) => {
-  if (value) {
-    const params = new URLSearchParams();
-    params.append('name', value);
-    dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: true });
-    Api.getApi(ApplicationConstants.BASE_URL + ApplicationConstants.FIND_BY_NAME_URL, { name: value })
-      .then(response => {
-        dispatch({ type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT, payload: response });
-        dispatch({ type: ActionConstants.LIST_DATA, payload: response });
-        dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: false });
-      })
-      .catch(err => {
-        dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: false });
-      });
+export const searchByName = async (dispatch, value) => {
+  try {
+    if (value) {
+      const params = new URLSearchParams();
+      params.append('name', value);
+      dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: true });
+      const response = await UserApis.searchByName(params)
+      dispatch({ type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT, payload: response });
+      dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: false });
+    }
+    else {
+      dispatch({ type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT, payload: [] });
+    }
   }
-  else {
-    dispatch({ type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT, payload: [] });
-    dispatch({ type: ActionConstants.LIST_DATA, payload: [] });
+  catch (err) {
+    dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: false });
   }
-}
+};
 
 export const clearInputFields = () => dispatch => {
   dispatch({
@@ -52,13 +47,56 @@ export const hideModal = () => dispatch => {
   });
 }
 
-export const removeItem = (value) => dispatch => {
+export const selectedElements = (value) => dispatch => {
   dispatch({
     type: ActionConstants.DIRECT_MESSAGE_MEMBERS_TO_BE_DISPLAYED,
     payload: value
   });
-  dispatch({
-    type: ActionConstants.MEMBERS_TO_BE_ADDED_LIST_DATA,
-    payload: value
-  });
+}
+
+export const createNewDirectMessage = (members) => async (dispatch) => {
+  try {
+    let ids = [];
+    members.forEach(element => {
+      ids.push(element.id);
+    });
+
+    dispatch({
+      type: ActionConstants.DIRECT_MESSAGE_BUTTON_LOADER_STATUS,
+      payload: true
+    });
+
+    const chatIdResponse = await ChatsApis.createNewDirectMessage(ids);
+    const response = await ChatsApis.getChatsAssociatedWithUser();
+    dispatch({
+      type: ActionConstants.DIRECT_MESSAGES_DATA,
+      payload: response
+    });
+
+    dispatch({
+      type: ActionConstants.HIGHLIGHT_SELECTED_CHAT,
+      payload: chatIdResponse.chatId
+    });
+
+    dispatch({
+      type: ActionConstants.DIRECT_MESSAGE_BUTTON_LOADER_STATUS,
+      payload: false
+    });
+
+    dispatch({
+      type: ActionConstants.DIRECT_MESSAGE_MODAL_VISIBILITY,
+      payload: false
+    });
+
+    dispatch({
+      type: ActionConstants.CLEAR_DIRECT_MESSAGE_INPUTS
+    });
+
+  }
+  catch (err) {
+    dispatch({
+      type: ActionConstants.DIRECT_MESSAGE_BUTTON_LOADER_STATUS,
+      payload: false
+    });
+  }
 }

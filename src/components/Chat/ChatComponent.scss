@@ -1,0 +1,111 @@
+.chat-container {
+  position: relative;
+  padding-top: 1%;
+  overflow: hidden;
+  height: 100%;
+  .loader {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+  .chat-header {
+    position: relative;
+    padding-bottom: 0.5%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    .member-count {
+      font-size: 0.7rem;
+      padding-bottom: 0.1%;
+      i {
+        margin-right: 4px;
+        color: #2196f3;
+      }
+    }
+  }
+  .chat-header::after {
+    position: absolute;
+    content: "";
+    background: #f3f3f3;
+    width: 100%;
+    height: 0.1rem;
+    bottom: 0;
+    left: 0;
+  }
+  .chat-body {
+    height: 81%;
+    overflow: scroll;
+    padding-top: 1%;
+    font-size: 0.75rem;
+    .new-message-banner {
+      text-align: center;
+      color: #858585;
+      padding: 2% 0;
+    }
+    .message-container {
+      padding: 5px;
+      border-radius: 3px;
+      .message-sender {
+        font-weight: 700;
+        .image-container {
+          width: 28px;
+          height: 28px;
+          display: inline-block;
+          background: #00adff;
+          color: white;
+          text-align: center;
+          font-size: 0.6rem;
+          border-radius: 50%;
+          line-height: 1.7rem;
+          margin-right: 1%;
+        }
+      }
+      .message-content {
+        padding: 1px 0;
+      }
+    }
+    .message-container:hover {
+      background: #f1f1f1;
+    }
+    .no-message-container {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      width: 100%;
+      color: #858585;
+      i {
+        color: #e97b22;
+      }
+    }
+    .new-message-container {
+      position: absolute;
+      bottom: 1%;
+      width: 99%;
+      textarea {
+        resize: none;
+        width: inherit;
+        border-style: solid;
+        border-color: #c5c5c5;
+        border-width: 1px;
+        border-radius: 4px;
+        padding: 1%;
+      }
+      textarea:focus {
+        border-style: solid;
+        border-width: 1px;
+        border-color: #000000;
+        outline: none !important;
+      }
+    }
+  }
+  .chat-body::-webkit-scrollbar {
+    display: none;
+  }
+}

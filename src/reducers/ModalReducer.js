@@ -3,8 +3,8 @@ const initialState = {
   modalTitle: '',
   isButtonLoaderVisible: false,
   isDataLoaderVisible: false,
-  searchValue: '',
-  searchResponse: null,
+  searchValue: undefined,
+  searchResponse: undefined,
   membersToBeDisplayed: [],
   isModalVisible: false
 }
@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
         ...state,
         searchValue: action.payload
       }
-    case ActionConstants.CLEAR_DIRECT_MESSAGE_INPUTS:
+    case ActionConstants.RESET_MODAL_STATE:
       return {
         ...state,
         isButtonLoaderVisible: false,

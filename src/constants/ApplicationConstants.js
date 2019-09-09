@@ -14,3 +14,4 @@ export const FIND_BY_NAME_URL = `${USER_PATH}/byName`;
 export const CHATS_PATH = "/chats";
 export const CHATS_ASSOCIATED_WITH_USER_URL = `${CHATS_PATH}/getChats`;
 export const CREATE_NEW_DIRECT_MESSAGE_URL = `${CHATS_PATH}/newDirectMessage`;
+export const CHAT_MESSAGES_URL = `${CHATS_PATH}/getChatMessages`;

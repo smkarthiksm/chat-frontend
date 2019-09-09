@@ -32,7 +32,6 @@ const LeftNavBarComponent = (props) => {
                 <i className="fas fa-circle"></i>
                 <span>
                   {element.members.map((member, index) => {
-
                     return member.firstName + " " + member.lastName + (index === element.members.length - 1 ? '' : ', ')
                   }
                   )}

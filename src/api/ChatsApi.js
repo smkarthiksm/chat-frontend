@@ -24,3 +24,15 @@ export const createNewDirectMessage = (payload) => {
       });
   });
 };
+
+export const getChatMessages = (params) => {
+  return new Promise((resolve, reject) => {
+    Api.get(ApplicationConstants.BASE_URL + ApplicationConstants.CHAT_MESSAGES_URL, params)
+      .then(response => {
+        resolve(response);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};

@@ -16,7 +16,7 @@ body,
 @media (min-width: 1281px) {
   html,
   body {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -28,7 +28,7 @@ body,
 @media (min-width: 1025px) and (max-width: 1280px) {
   html,
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -40,7 +40,7 @@ body,
 @media (min-width: 768px) and (max-width: 1024px) {
   html,
   body {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -52,7 +52,7 @@ body,
 @media (min-width: 481px) and (max-width: 767px) {
   html,
   body {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -64,6 +64,6 @@ body,
 @media (min-width: 320px) and (max-width: 480px) {
   html,
   body {
-    font-size: 14px;
+    font-size: 12px;
   }
 }

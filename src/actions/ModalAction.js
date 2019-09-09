@@ -1,6 +1,7 @@
 import * as ActionConstants from "../constants/ActionConstants"
 import * as UserApis from '../api/UserApi'
 import * as ChatsApis from '../api/ChatsApi'
+
 export const updateFields = (value) => dispatch => {
   dispatch({
     type: ActionConstants.UPDATE_DIRECT_MESSAGE_INPUTS,
@@ -11,17 +12,12 @@ export const updateFields = (value) => dispatch => {
 
 export const searchByName = async (dispatch, value) => {
   try {
-    if (value) {
-      const params = new URLSearchParams();
-      params.append('name', value);
-      dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: true });
-      const response = await UserApis.searchByName(params)
-      dispatch({ type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT, payload: response });
-      dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: false });
-    }
-    else {
-      dispatch({ type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT, payload: [] });
-    }
+    const params = new URLSearchParams();
+    params.append('name', value);
+    dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: true });
+    const response = await UserApis.searchByName(params)
+    dispatch({ type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT, payload: response });
+    dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: false });
   }
   catch (err) {
     dispatch({ type: ActionConstants.DIRECT_MESSAGE_DATA_LOADER_STATUS, payload: false });
@@ -30,7 +26,7 @@ export const searchByName = async (dispatch, value) => {
 
 export const clearInputFields = () => dispatch => {
   dispatch({
-    type: ActionConstants.CLEAR_DIRECT_MESSAGE_INPUTS
+    type: ActionConstants.RESET_MODAL_STATE
   });
 }
 
@@ -40,7 +36,7 @@ export const hideModal = () => dispatch => {
     payload: false
   });
   dispatch({
-    type: ActionConstants.CLEAR_DIRECT_MESSAGE_INPUTS
+    type: ActionConstants.RESET_MODAL_STATE
   });
   dispatch({
     type: ActionConstants.CLEAR_LIST_DATA
@@ -89,7 +85,7 @@ export const createNewDirectMessage = (members) => async (dispatch) => {
     });
 
     dispatch({
-      type: ActionConstants.CLEAR_DIRECT_MESSAGE_INPUTS
+      type: ActionConstants.RESET_MODAL_STATE
     });
 
   }
@@ -99,4 +95,11 @@ export const createNewDirectMessage = (members) => async (dispatch) => {
       payload: false
     });
   }
+}
+
+export const clearSearchResult = () => dispatch => {
+  dispatch({
+    type: ActionConstants.DIRECT_MESSAGE_SEARCH_RESULT,
+    payload: []
+  });
 }

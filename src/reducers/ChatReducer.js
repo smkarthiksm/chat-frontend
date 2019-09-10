@@ -27,6 +27,17 @@ export default (state = initialState, action) => {
         ...state,
         newMessage: action.payload,
       }
+    case ActionConstants.APPEND_NEW_CHAT_MESSAGES_DATA:
+      state.chatMessagesData.messages.push(action.payload);
+      return {
+        ...state,
+      }
+    case ActionConstants.MARK_NEW_CHAT_MESSAGE_SENT:
+      state.chatMessagesData.messages.pop();
+      state.chatMessagesData.messages.push(action.payload);
+      return {
+        ...state
+      }
 
     default:
       return state

@@ -47,7 +47,7 @@ const ModalComponent = (props) => {
               <h4>{props.state.modalTitle}</h4>
             </div>
             <div className="search-bar col-md-12">
-              <input className="col-md-8 user-input-box" name="search" type="text" placeholder="Search by name..." defaultValue={props.state.searchValue} onChange={(event) => updateFields(event.target.value)} />
+              <input className="col-md-8 user-input-box" name="search" type="text" placeholder="Search by name..." value={props.state.searchValue} onChange={(event) => updateFields(event.target.value)} />
               <button type="button" className="col-md-2 btn btn-primary btn-block" disabled={props.state.membersToBeDisplayed ? false : true} onClick={() => props.createNewDirectMessage(props.state.membersToBeDisplayed)}>
                 {props.state.isButtonLoaderVisible ?
                   <div className="spinner-border spinner-border-sm" role="status" />

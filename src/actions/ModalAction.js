@@ -62,7 +62,7 @@ export const createNewDirectMessage = (members) => async (dispatch) => {
       payload: true
     });
 
-    const chatIdResponse = await ChatsApis.createNewDirectMessage(ids);
+    const chatIdResponse = await ChatsApis.createNewDirectMessage({ ids: ids });
     const response = await ChatsApis.getChatsAssociatedWithUser();
     dispatch({
       type: ActionConstants.DIRECT_MESSAGES_DATA,

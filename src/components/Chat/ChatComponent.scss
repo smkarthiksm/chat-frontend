@@ -39,7 +39,7 @@
     left: 0;
   }
   .chat-body {
-    height: 81%;
+    height: 83%;
     overflow: scroll;
     padding-top: 1%;
     font-size: 0.75rem;
@@ -57,7 +57,7 @@
           width: 28px;
           height: 28px;
           display: inline-block;
-          background: #00adff;
+          background: #5e3494;
           color: white;
           text-align: center;
           font-size: 0.6rem;
@@ -68,6 +68,12 @@
       }
       .message-content {
         padding: 1px 0;
+      }
+      .not-sent-color{
+        color: #666666
+      }
+      .sent-color{
+        color: #000000;
       }
     }
     .message-container:hover {

@@ -39,28 +39,28 @@ const SignupComponent = (props) => {
           <div className="col-md-9 right-container">
             <div className="row">
               <div className="col-md-12 user-input-container">
-                <input className="col-md-5 user-input-box" name="firstName" type="text" placeholder="First Name" defaultValue={props.state.firstName} onChange={(event) => onChange(props, event)} />
-                <input className="col-md-5 user-input-box" name="lastName" type="text" placeholder="Last Name" defaultValue={props.state.lastName} onChange={(event) => onChange(props, event)} />
+                <input className="col-md-5 user-input-box" name="firstName" type="text" placeholder="First Name" value={props.state.firstName} onChange={(event) => onChange(props, event)} />
+                <input className="col-md-5 user-input-box" name="lastName" type="text" placeholder="Last Name" value={props.state.lastName} onChange={(event) => onChange(props, event)} />
               </div>
             </div>
             <div className="row">
               <div className="col-md-12 user-input-container">
-                <input className="col-md-5 user-input-box" name="email" type="email" placeholder="Email" defaultValue={props.state.email} onChange={(event) => onChange(props, event)} />
+                <input className="col-md-5 user-input-box" name="email" type="email" placeholder="Email" value={props.state.email} onChange={(event) => onChange(props, event)} />
               </div>
             </div>
             <div className="row">
               <div className="col-md-12 user-input-container">
-                <input className="col-md-5 user-input-box" name="phoneNumber" type="number" placeholder="Phone Number" defaultValue={props.state.phoneNumber} onChange={(event) => onChange(props, event)} />
+                <input className="col-md-5 user-input-box" name="phoneNumber" type="number" placeholder="Phone Number" value={props.state.phoneNumber} onChange={(event) => onChange(props, event)} />
               </div>
             </div>
             <div className="row">
               <div className="col-md-12 user-input-container">
-                <input className="col-md-5 user-input-box" name="password" type="password" placeholder="Password" defaultValue={props.state.password} onChange={(event) => onChange(props, event)} />
+                <input className="col-md-5 user-input-box" name="password" type="password" placeholder="Password" value={props.state.password} onChange={(event) => onChange(props, event)} />
               </div>
             </div>
             <div className="row">
               <div className="col-md-12 user-input-container">
-                <input className="col-md-5 user-input-box" name="retypePassword" type="password" placeholder="Retype Password" defaultValue={props.state.retypePassword} onChange={(event) => onChange(props, event)} />
+                <input className="col-md-5 user-input-box" name="retypePassword" type="password" placeholder="Retype Password" value={props.state.retypePassword} onChange={(event) => onChange(props, event)} />
               </div>
             </div>
             <div className="row">

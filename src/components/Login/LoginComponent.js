@@ -41,10 +41,10 @@ const LoginComponent = (props) => {
               </div>
             </div>
             <div className="user-input-container">
-              <input className="user-input-box" name="email" type="email" placeholder="Email" defaultValue={props.state.email} onChange={(event) => onChange(event)} />
+              <input className="user-input-box" name="email" type="email" placeholder="Email" value={props.state.email} onChange={(event) => onChange(event)} />
             </div>
             <div className="user-input-container pb-0">
-              <input className="user-input-box" name="password" type="password" placeholder="Password" defaultValue={props.state.password} onChange={(event) => onChange(event)} />
+              <input className="user-input-box" name="password" type="password" placeholder="Password" value={props.state.password} onChange={(event) => onChange(event)} />
             </div>
             <div className="forgot-password-container">
               <span>Forgot Password ?</span>

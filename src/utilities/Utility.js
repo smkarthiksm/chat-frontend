@@ -16,3 +16,7 @@ export const validateJWT = () => {
 export const logOut = () => {
   localStorage.removeItem(ApplicationConstants.JWT)
 }
+
+export const decodeJWT = () => {
+  return jwt_decode(localStorage.getItem(ApplicationConstants.JWT));
+}

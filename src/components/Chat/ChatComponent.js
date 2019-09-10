@@ -1,9 +1,14 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/ChatAction';
 import './ChatComponent.scss';
 
 const ChatComponent = (props) => {
+  const lastMessageRef = React.createRef();
+
+  const scrollToBottom = () => {
+    lastMessageRef.current.scrollIntoView()
+  }
   useEffect(() => {
     props.getChatMessages(props.match.params.chatId);
   }, [props.match.params.chatId]);
@@ -11,7 +16,10 @@ const ChatComponent = (props) => {
   const onEnterPress = (e) => {
     if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
-      props.sendMessage();
+      props.sendNewMessage(props.match.params.chatId, e.target.value);
+      // setTimeout(() => {
+        scrollToBottom();
+      // }, 10);
     }
   }
 
@@ -58,11 +66,12 @@ const ChatComponent = (props) => {
                         :
                         null
                       }
-                      <div className="message-content">
+                      <div className={`message-content ${!element.isSent ? 'not-sent-color' : null}`}>
                         {element.message}
                       </div>
                     </div>
                   )}
+                  < div ref={lastMessageRef} />
                 </Fragment>
                 :
                 <div className="no-message-container">
@@ -73,7 +82,7 @@ const ChatComponent = (props) => {
                 </div>
               }
               <div className="new-message-container">
-                <textarea rows="3" placeholder="Type to send a message" type="text" defaultValue={props.state.newMessage} onChange={(event) => props.updateField(event.target.value)} onKeyDown={onEnterPress} />
+                <textarea rows="3" placeholder="Type to send a message" type="text" value={props.state.newMessage} onChange={(event) => props.updateField(event.target.value)} onKeyDown={onEnterPress} />
               </div>
             </div>
           </Fragment>

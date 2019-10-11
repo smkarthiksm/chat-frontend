@@ -18,7 +18,7 @@ const ChatComponent = (props) => {
       e.preventDefault();
       props.sendNewMessage(props.match.params.chatId, e.target.value);
       // setTimeout(() => {
-        scrollToBottom();
+        // scrollToBottom();
       // }, 10);
     }
   }
